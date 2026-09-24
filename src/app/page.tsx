@@ -4,7 +4,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
 import About from "@/components/home/About";
-import Stats from "@/components/home/Stats";
 import EcosystemShowcase from "@/components/home/EcosystemShowcase";
 import Learning from "@/components/layanan/Learning";
 import ServicesPillars from "@/components/layanan/ServicesPillars";
