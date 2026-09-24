@@ -3,12 +3,13 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { contact, navLinks, ecosystemLinks } from "@/data/site";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [ecoOpen, setEcoOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const openEco = () => {
@@ -92,7 +93,58 @@ export default function Navbar() {
             )}
           </div>
         </div>
+
+        {/* Tombol menu — hanya tampil di layar kecil */}
+        <button
+          type="button"
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-label={mobileOpen ? "Tutup menu" : "Buka menu"}
+          aria-expanded={mobileOpen}
+          className="sm:hidden justify-self-end col-start-3 flex h-10 w-10 items-center justify-center rounded-lg text-cream hover:bg-white/5"
+        >
+          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
       </nav>
+
+      {/* Panel menu mobile */}
+      {mobileOpen && (
+        <div className="sm:hidden border-t border-white/5 bg-ink/95 backdrop-blur-md max-h-[calc(100dvh-4rem)] overflow-y-auto">
+          <div className="mx-auto max-w-6xl px-6 py-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`block py-3 text-base ${
+                  pathname === link.href ? "text-gold" : "text-cream/90"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            <p
+              className={`mt-4 border-t border-white/10 pt-4 pb-1 text-[11px] uppercase tracking-[0.25em] ${
+                isEcoActive ? "text-gold" : "text-haze"
+              }`}
+            >
+              Our Ecosystem
+            </p>
+            {ecosystemLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`block py-3 pl-3 text-base ${
+                  pathname === link.href ? "text-gold" : "text-cream/90"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }
