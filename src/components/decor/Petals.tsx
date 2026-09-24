@@ -13,12 +13,11 @@ type Petal = {
 };
 
 const petals: Petal[] = [
-  { top: "8%", left: "12%", size: 46, hue: "#FF7A33", duration: 9, delay: 0, rotate: 15 },
-  { top: "18%", left: "82%", size: 64, hue: "#E91E8C", duration: 11, delay: 0.6, rotate: -20 },
-  { top: "62%", left: "6%", size: 38, hue: "#FFCB6B", duration: 8, delay: 1.2, rotate: 30 },
-  { top: "74%", left: "88%", size: 52, hue: "#E91E8C", duration: 10, delay: 0.3, rotate: -10 },
-  { top: "40%", left: "48%", size: 30, hue: "#FF7A33", duration: 7, delay: 1.8, rotate: 8 },
-  { top: "85%", left: "38%", size: 40, hue: "#FFCB6B", duration: 9.5, delay: 0.9, rotate: -25 },
+  { top: "8%", left: "10%", size: 42, hue: "#FF7A33", duration: 9, delay: 0, rotate: 15 },
+  { top: "14%", left: "84%", size: 56, hue: "#E91E8C", duration: 11, delay: 0.6, rotate: -20 },
+  { top: "30%", left: "4%", size: 32, hue: "#FFCB6B", duration: 8, delay: 1.2, rotate: 30 },
+  { top: "6%", left: "48%", size: 26, hue: "#FF7A33", duration: 7, delay: 1.8, rotate: 8 },
+  { top: "34%", left: "90%", size: 34, hue: "#FFCB6B", duration: 9.5, delay: 0.9, rotate: -25 },
 ];
 
 function PetalShape({ hue, size }: { hue: string; size: number }) {
@@ -36,6 +35,14 @@ function PetalShape({ hue, size }: { hue: string; size: number }) {
         fill={hue}
         fillOpacity="0.55"
       />
+      <path
+        d="M50 22C58 32 70 38 70 53C70 65 60 73 50 73C40 73 30 65 30 53C30 38 42 32 50 22Z"
+        fill="none"
+        stroke="#FDF8F3"
+        strokeOpacity="0.35"
+        strokeWidth="1.5"
+      />
+      <circle cx="50" cy="52" r="4" fill="#FDF8F3" fillOpacity="0.4" />
     </svg>
   );
 }
